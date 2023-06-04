@@ -6,7 +6,7 @@ IDE: Spring Tool Suite (STS)
 
 **Recomendación**
 
-Si al terminar de indexar el servicio en local sigue fallando, hacer clic derecho sobre el pom.xml, luego elegir Maven -> Update Project... para que se descargue o actualice todas las dependencias del repositorio.
+Si al terminar de indexar el servicio en local sigue fallando, hacer clic derecho sobre el pom.xml, luego elegir Maven -> Update Project... para que se descargue o actualice todas las dependencias desde repositorio.
 
 
 
