@@ -1,0 +1,50 @@
+<ul class="alert alert-danger" *ngIf="errores.length > 0">
+    <li *ngFor="let error of errores">
+        {{error}}
+    </li>
+</ul>
+<div class="card bg-light mb-3">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+<form>
+  <div class="form-group row mb-3">
+      <label for="nombre" class="col-form-label col-sm-2">Nombre: </label>
+      <div class="col-sm-6">
+          <input type="text" name="nombre" id="nombre" class="form-control form-control-lg" [(ngModel)]="prueba.nombre" placeholder="Nueva prueba">
+      </div>
+  </div>
+  <div class="form-group row mb-3">
+      <label for="tiempoEjecucion" class="col-form-label col-sm-2">Tiempo ejecución: </label>
+      <div class="col-sm-6">
+          <input type="text" name="tiempoEjecucion" id="tiempoEjecucion" class="form-control form-control-lg" [(ngModel)]="prueba.tiempoEjecucion" placeholder="50">
+      </div>
+  </div>
+    <div class="form-group row mb-3">
+        <label for="coste" class="col-form-label col-sm-2">Coste: </label>
+        <div class="col-sm-6">
+            <input type="text" name="coste" id="coste" class="form-control form-control-lg" [(ngModel)]="prueba.coste" placeholder="200.0">
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label for="tipoPrueba" class="col-form-label col-sm-2">Tipo prueba: </label>
+        <div class="col-sm-6">
+            <select [compareWith]="compararTipoPrueba" type="text" name="tipoPrueba" id="tipoPrueba" class="form-control form-control-lg"  [(ngModel)]="prueba.tipoPrueba" placeholder="Acero" >
+                <option [ngValue]="undefined">--- Seleccionar una prueba ---</option>
+                <option *ngFor="let tipo of tiposPruebas" [ngValue]="tipo">{{tipo.nombre}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label for="descripcion" class="col-form-label col-sm-2">Comentarios: </label>
+        <div class="col-sm-6">
+            <textarea name="descripcion" id="descripcion" class="form-control form-control-lg" [(ngModel)]="prueba.descripcion" placeholder="Escriba aquí..."></textarea>
+        </div>
+    </div>
+  <div class="form-group row mb-3">
+      <div class="col-sm-6">
+          <button class="btn btn-primary" role="button" (click)='createPrueba()'>Añadir</button>
+      </div>
+  </div>
+</form>
+   </div>
+</div>

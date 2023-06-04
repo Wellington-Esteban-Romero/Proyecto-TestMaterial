@@ -1,0 +1,31 @@
+<div class="py-4 ml-5 mr-5">
+    <app-form-pruebas></app-form-pruebas>
+    <div class="card bg-light mb-3">
+        <div class="card-header">Pruebas de Material</div>
+        <div class="card-body text-dark table-responsive" >
+          <h5 class="card-title">Código del material: <b>{{codigo}}</b></h5>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Persona</th>
+                        <th>Tiempo ejecución</th>
+                        <th>Fecha de prueba</th>
+                        <th>Tipo prueba</th>
+                        <th>Comentarios</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prueba of pruebas">
+                        <td>{{prueba.id}}</td>
+                        <td>{{prueba.personaRealizaPrueba}}</td>
+                        <td>{{prueba.tiempoEjecucion}}</td>
+                        <td>{{prueba.fechaCreacion}}</td>
+                        <td>{{prueba.tipoPrueba.nombre}}</td>
+                        <td>{{prueba.descripcion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

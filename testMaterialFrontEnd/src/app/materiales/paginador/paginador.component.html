@@ -1,0 +1,27 @@
+<ul *ngIf="paginas && paginas.length > 0" class="pagination justify-content-center">
+    <li *ngIf="paginador.number > 0" class="page-item">
+      <a class="page-link" href="#"  [routerLink]="['/materiales/page', 0]">
+        <span aria-hidden="true">Primero</span>
+      </a>
+    </li>
+    <li *ngIf="paginador.number > 0" class="page-item">
+      <a class="page-link" href="#"  [routerLink]="['/materiales/page', paginador.number-1]">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li  *ngFor="let numPage of paginas" class="page-item" [ngClass] = "{active:paginador.number == numPage-1}">
+      <span *ngIf="paginador.number == numPage-1" class="page-link">{{numPage}}</span>
+      <a class="page-link" *ngIf="paginador.number != numPage-1" [routerLink]="['/materiales/page', numPage-1]">{{numPage}}</a>
+    </li>
+    <li *ngIf="paginador.number < paginador.totalPages-1" class="page-item">
+      <a class="page-link" href="#"  [routerLink]="['/materiales/page', paginador.number+1]">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <li *ngIf="paginador.number < paginador.totalPages-1" class="page-item">
+      <a class="page-link" href="#"  [routerLink]="['/materiales/page', paginador.totalPages-1]">
+        <span aria-hidden="true">Último</span>
+      </a>
+    </li>
+  </ul>
+  

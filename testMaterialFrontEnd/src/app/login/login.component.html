@@ -1,0 +1,23 @@
+<mat-card class="mt-5">
+  <mat-card-title class="mt-4">{{titulo}}</mat-card-title>
+  <mat-card-content>
+    <form>
+      <p>
+        <mat-form-field class="mt-4">
+          <input type="text" name="username" matInput  placeholder="Usuario" [(ngModel)]="usuario.username">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input type="password" name="password" matInput placeholder="Contraseña" [(ngModel)]="usuario.password">
+        </mat-form-field>
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-button (click)="login()">Login</button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

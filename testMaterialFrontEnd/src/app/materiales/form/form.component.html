@@ -1,0 +1,64 @@
+<ul class="alert alert-danger" *ngIf="errores.length > 0">
+    <li *ngFor="let error of errores">
+        {{error}}
+    </li>
+</ul>
+<div class="py-4 ml-5 mr-5">
+    <div class="card bg-light mb-3">
+        <div class="card-header">{{titulo}}</div>
+        <div class="card-body">
+            <form >
+                <div *ngIf="codigo" class="form-group row mb-3">
+                    <label for="nombre" class="col-form-label col-sm-2">Código: </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="id" id="id" class="form-control form-control-lg" [(ngModel)]="material.id" readonly>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="tipo" class="col-form-label col-sm-2">Nombre: </label>
+                    <div class="col-sm-6">
+                        <select [compareWith]="compararTipoMaterial" type="text" name="tipo" id="tipo" class="form-control form-control-lg"  [(ngModel)]="material.tipo" placeholder="Acero" >
+                            <option [ngValue]="undefined">--- Seleccionar un material ---</option>
+                            <option *ngFor="let tipo of tiposMateriales" [ngValue]="tipo">{{tipo.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="descripcion" class="col-form-label col-sm-2">Descripción: </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="descripcion" id="descripcion" class="form-control form-control-lg" [(ngModel)]="material.descripcion" placeholder="prueba">
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="fabricante" class="col-form-label col-sm-2">Fabricante: </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="fabricante" id="fabricante" class="form-control form-control-lg" [(ngModel)]="material.fabricante"  placeholder="empresa">
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="fechaAdquisicion" class="col-form-label col-sm-2">Fecha adquisicion: </label>
+                    <div class="col-sm-6">
+                        <input matInput [matDatepicker]="picker" name="fechaAdquisicion" id="fechaAdquisicion" class="form-control form-control-lg"  [(ngModel)]="material.fechaAdquisicion" style="display: inline;">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="vidaUtil" class="col-form-label col-sm-2">Vida útil: </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="vidaUtil" id="vidaUtil" class="form-control form-control-lg" [(ngModel)]="material.vidaUtil" placeholder="50">
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary" role="button" (click)='createMaterial()' *ngIf="!material.id; else elsematerial" [disabled]="submissionForm.valid">Crear</button>
+                        <ng-template #elsematerial>
+                            <button class="btn btn-primary" role="button" (click)='updateMaterial()' [disabled]="submissionForm.valid">Editar</button>
+                        </ng-template>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

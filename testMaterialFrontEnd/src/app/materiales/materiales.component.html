@@ -1,0 +1,56 @@
+<app-detalles *ngIf="refMaterial" [material] = "refMaterial"></app-detalles>
+<div class="py-4 ml-5 mr-5">
+    <div class="card bg-light mb-3">
+        <div class="card-header">Materiales</div>
+        <div class="card-body table-responsive">
+            <h4 class="card-title">Lista Materiales</h4>
+            <div>
+                <button *ngIf="_loginService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" [routerLink]="['/materiales/form']">Agregar material</button>
+            </div>
+            <div *ngIf="materiales.length == 0" class="alert alert-info">
+                No hay registro almacenados
+            </div>
+            <table class="table table-striped mt-5" *ngIf="materiales.length > 0">
+                <thead >
+                <tr >
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Fabricante</th>
+                    <th>Pruebas</th>
+                    <th>Detalles</th>
+                    <th *ngIf="_loginService.hasRole('ROLE_ADMIN')"></th>
+                    <th *ngIf="_loginService.hasRole('ROLE_ADMIN')"></th>
+                </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let material of materiales">
+                        <td>{{material.id}}</td>
+                        <td>{{material.tipo.nombre | titlecase}}</td>
+                        <td>{{material.fabricante | titlecase}}</td>
+                        <td>
+                            <a [routerLink]="['/pruebas', material.id]" matTooltip="prueba">
+                                <mat-icon class="green-icon" style="color: #53fd56;">build</mat-icon>
+                            </a>
+                        </td>
+                        <td>
+                            <a (click)="showModalDetalle(material)" data-toggle="modal" data-target="#detalleModal2" matTooltip="detalles">
+                                <mat-icon style="color: #5370fd;">details</mat-icon>
+                            </a>
+                        </td>
+                        <td *ngIf="_loginService.hasRole('ROLE_ADMIN')">
+                            <a [routerLink]="['/materiales/form', material.id]" matTooltip="editar">
+                                <mat-icon style="color: #fd7553;">edit</mat-icon>
+                            </a>
+                        </td>
+                        <td *ngIf="_loginService.hasRole('ROLE_ADMIN')">
+                            <button type="button" name="button" (click)="deleteMaterial(material)" matTooltip="eliminar">
+                                <mat-icon style="color: #fd536d;">delete_forever</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>  
+            </table>
+            <app-paginador *ngIf="paginador" [paginador] = "paginador"></app-paginador>
+        </div>
+    </div>
+</div>
