@@ -51,7 +51,7 @@ public class Material implements Serializable {
 	private NombreMaterial tipo;
 
 	@OneToMany(mappedBy = "material", orphanRemoval = true)
-	@JsonIgnoreProperties("material")
+	@JsonIgnoreProperties(value = "material", allowSetters = true)
 	private List<Prueba> pruebas;
 
 	public Material() {}

@@ -19,10 +19,6 @@ INSERT INTO nombresmateriales (id, nombre) VALUES (18,'Fibra de vidrio');
 INSERT INTO nombresmateriales (id, nombre) VALUES (19,'Membranas impermeabilizantes');
 INSERT INTO nombresmateriales (id, nombre) VALUES (20,'Pintura');
 
-
-INSERT INTO pruebas (id,nombre,descripcion,fecha_creacion,tiempo_ejecucion,coste,persona_realiza_prueba,material_id,tipoprueba_id) VALUES (1,'prueba laboratorio','fue mal',STR_TO_DATE('1-01-2012', '%d-%m-%Y'),3,600.0,'Pedro',1,2);
-INSERT INTO pruebas (id,nombre,descripcion,fecha_creacion,tiempo_ejecucion,coste,persona_realiza_prueba,material_id,tipoprueba_id) VALUES (2,'prueba ambiental','prueba correcta',STR_TO_DATE('1-01-2012', '%d-%m-%Y'),6,600.0,'Juan',1,6);
-
 INSERT INTO tipospruebas (id, nombre) VALUES (1,'Pruebas de resistencia');
 INSERT INTO tipospruebas (id, nombre) VALUES (2,'Pruebas de densidad');
 INSERT INTO tipospruebas (id, nombre) VALUES (3,'Pruebas de absorción');
@@ -32,11 +28,11 @@ INSERT INTO tipospruebas (id, nombre) VALUES (6,'Pruebas de resistencia a los ag
 INSERT INTO tipospruebas (id, nombre) VALUES (7,'Pruebas de adherencia');
 
 
-INSERT INTO materiales (id,descripcion,fabricante, fecha_adquisicion, vida_util,nombrematerial_id) VALUES (1,'material nuevo','EmpresaA', STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 50, 1);
-INSERT INTO materiales (id,descripcion,fabricante,fecha_adquisicion, vida_util,nombrematerial_id) VALUES (2,'material llego roto','EmpresaB',STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 50,1);
+INSERT INTO materiales (id,descripcion,fabricante, fecha_adquisicion, vida_util,nombrematerial_id) VALUES (1, 'Material nuevo','Empresa A', STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 50, 1);
+INSERT INTO materiales (id,descripcion,fabricante,fecha_adquisicion, vida_util,nombrematerial_id) VALUES (2, 'Material llegó roto','Empresa B',STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 50, 3);
 
-INSERT INTO `usuarios` (username,email, password, enabled,nombre,apellidos) VALUES ('pepe','ejemplo@gmail.com','$2a$10$S9M50w9pR1VQWGHcBeBNyOJ0Nr2fStBSo.Z6BvN2Vaqs046kcY3RO',1,"Wellington","Romero") ;
-INSERT INTO `usuarios` (username,email, password, enabled,nombre,apellidos) VALUES ('admin','ejemploAdmin@gmail.com','$2a$10$FhdM/.IKyys8WRme77n2BO7Ry02wKmEs0/YA9JLZojks1YztaT.Hm',1,"Soraya","Romero") ;
+INSERT INTO `usuarios` (username,email, password, enabled, nombre,apellidos) VALUES ('Welly.tecnico','ejemplo@gmail.com','$2a$10$S9M50w9pR1VQWGHcBeBNyOJ0Nr2fStBSo.Z6BvN2Vaqs046kcY3RO', 1, "Wellington","Romero") ;
+INSERT INTO `usuarios` (username,email, password, enabled, nombre,apellidos) VALUES ('Pablo.jefe','ejemploAdmin@gmail.com','$2a$10$FhdM/.IKyys8WRme77n2BO7Ry02wKmEs0/YA9JLZojks1YztaT.Hm', 1, "Pablo","Jacinto") ;
 
 INSERT INTO `roles` (nombre) VALUES ('ROLE_USER');
 INSERT INTO `roles` (nombre) VALUES ('ROLE_ADMIN');

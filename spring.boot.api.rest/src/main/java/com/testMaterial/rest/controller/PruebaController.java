@@ -10,7 +10,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,28 +18,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testMaterial.rest.model.NombreMaterial;
 import com.testMaterial.rest.model.Prueba;
 import com.testMaterial.rest.model.TipoPrueba;
 import com.testMaterial.rest.service.PruebaService;
+
+import jakarta.validation.Valid;
 
 @CrossOrigin(origins = {"http://localhost:4200/"})
 @RestController
 @RequestMapping("api/rest")
 public class PruebaController {
-	
+
 	@Autowired
 	private PruebaService pruebaService;
-	
+
+	@GetMapping("/pruebas")
+	public List<Prueba> findAll() {
+		return pruebaService.findAll();
+	}
+
 	@GetMapping("/pruebas/{id}")
 	public List<Prueba> findAll(@PathVariable Long id) {
 		return pruebaService.findAll().stream()
 				.filter(m -> m.getMaterial().getId().longValue() == id)
 				.collect(Collectors.toList());
 	}
-	
+
 	@PostMapping("/prueba")
-	public ResponseEntity<?> createPrueba (@Validated @RequestBody Prueba pruebaObj, BindingResult result) {
+	public ResponseEntity<?> createPrueba (@Valid @RequestBody Prueba pruebaObj, BindingResult result) {
 
 		Prueba prueba = null;
 
@@ -68,11 +73,10 @@ public class PruebaController {
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/material/tiposPruebas")
 	public List<TipoPrueba> getTiposPruebas() {
 		return pruebaService.findAllByTipoPrueba();
 	}
-
 
 }

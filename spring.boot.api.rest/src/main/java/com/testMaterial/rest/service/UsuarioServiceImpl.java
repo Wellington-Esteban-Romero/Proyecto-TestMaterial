@@ -28,7 +28,7 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { // el usuario de spring security
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario user =  usuarioDao.findByUsername(username);
 
 		if (user == null) {

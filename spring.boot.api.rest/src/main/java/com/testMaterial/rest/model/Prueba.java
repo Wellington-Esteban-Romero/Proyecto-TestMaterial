@@ -62,6 +62,7 @@ public class Prueba implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "material_id")
+	@JsonIgnoreProperties(value = "material_id", allowSetters = true)
 	private Material material;
 	
 	@PrePersist
